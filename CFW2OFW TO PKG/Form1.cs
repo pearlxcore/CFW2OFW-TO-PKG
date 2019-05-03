@@ -16,9 +16,13 @@ namespace CFW2OFW_TO_PKG
 
     public partial class Form1 : Form
     {
-        string directory;
+        static string directory,  dir_new, split_dest, replace_string;
+        int s = 0;
+        int results;
         string[] files;
         private int result;
+        string pathSplit;
+        string temp = Path.GetTempPath() + "CTP";
         private static void extract(string nameSpace, string outDirectory, string internalFilePath, string resourceName)
         {
             Assembly assembly = Assembly.GetCallingAssembly();
@@ -62,6 +66,7 @@ namespace CFW2OFW_TO_PKG
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Directory.CreateDirectory(temp);
             this.AllowDrop = true;
             this.DragEnter += Form1_DragEnter;
             this.DragDrop += Form1_DragDrop;
@@ -80,11 +85,97 @@ namespace CFW2OFW_TO_PKG
 
                 if (Directory.Exists(files[0]))
                 {
-                    panel1.Visible = true;
-                    panel2.Visible = false;
-                    label1.Visible = false;
+                    if (checkBox1.Checked)
+                    {
+
+                        this.txtGame.Text = files[0];
+                        string dir = this.txtGame.Text;
+                        DirectoryInfo dir_info = new DirectoryInfo(dir);
+                        pathSplit = dir_info.ToString();
+                        directory = dir_info.Name;  // System32
+                        replace_string = Path.GetDirectoryName(pathSplit) + @"\";
+
+                        if (Directory.GetFiles(pathSplit, "*.sfo").Length == 0)
+                        {
+                            MessageBox.Show("Game folder not valid", "CFW2OFW TO PKG", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                        }
+                        else
+                        {
+                            if (directory.ToString().Contains("NPEB"))
+                            {
+                                dir_new = directory.Replace("NPEB", "BLES");
+                            }
+                            else if (directory.ToString().Contains("NPUB"))
+                            {
+                                dir_new = directory.Replace("NPUB", "BLUS");
+
+                            }
+                           
+                            File.WriteAllBytes(temp + "\\cygz.dll", Properties.Resources.cygz);
+                            File.WriteAllBytes(temp + "\\psn_package_npdrm.exe", Properties.Resources.psn_package_npdrm);
+                            File.WriteAllBytes(temp + "\\dirsplit.exe", Properties.Resources.dirsplit);
+                            File.WriteAllBytes(temp + "\\cygwin.dll", Properties.Resources.cygwin1);
+                            File.WriteAllBytes(temp + "\\isgsg.dll", Properties.Resources.isgsg);
+                            File.WriteAllBytes(temp + "\\nhcolor.exe", Properties.Resources.nhcolor);
+                            File.WriteAllBytes(temp + "\\ps3xploit_rifgen_edatresign.exe", Properties.Resources.ps3xploit_rifgen_edatresign);
+                            File.WriteAllBytes(temp + "\\sfk.exe", Properties.Resources.sfk);
+                            File.WriteAllBytes(temp + "\\sfoprint.exe", Properties.Resources.sfoprint);
+                            File.WriteAllBytes(temp + "\\Wprompt.exe", Properties.Resources.Wprompt);
+
+
+
+                            richTextBox1.Text += "working path : " + pathSplit + "\n\n";
+
+
+                            Process p = new Process();
+                            p.StartInfo.FileName = temp + "\\dirsplit.exe";
+                            p.StartInfo.CreateNoWindow = true;
+                            p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            p.StartInfo.UseShellExecute = false;
+                            p.StartInfo.RedirectStandardOutput = true;
+                            p.StartInfo.Arguments = " \"" + pathSplit + "\" 3685376656";
+                            richTextBox1.Text += "dirsplit argument : " + p.StartInfo.FileName + p.StartInfo.Arguments + "\n\n";
+                            p.Start();
+
+                            p.WaitForExit();
+                            
+
+                            string[] fileEntries = Directory.GetFiles(Environment.CurrentDirectory, "chunk-*.txt");
+                            foreach (var file in fileEntries)
+                            {
+                                s++;
+                            }
+
+                            richTextBox2.Text = "[*] Output PKG : " + s.ToString() + "\n";
+
+                            backgroundMoveandCreate.RunWorkerAsync();
+                            
+
+                        }
+
+
+                        
+                       
+                        
+                        /*
+                        Process Split = new Process();
+                        Split.StartInfo.FileName = temp + "\\make_pkg.bat";
+                        Split.StartInfo.CreateNoWindow = true;
+                        Split.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+
+                        Split.Start();
+                        Split.WaitForExit();
+                        */
+                    }
+                    else
+                    {
+                        panel1.Visible = true;
+                        panel2.Visible = false;
+                        label1.Visible = false;
+
+                        backgroundWorker1.RunWorkerAsync();
+                    }
                     
-                    backgroundWorker1.RunWorkerAsync();
 
                 }
                 else
@@ -92,6 +183,65 @@ namespace CFW2OFW_TO_PKG
                     MessageBox.Show("Only drag and drop game folder goddamitt!", "CFW2OFW TO PKG", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 }
             }
+        }
+
+        private void createBatandRun()
+        {
+            File.WriteAllBytes(temp + "\\make_pkg.bat", Properties.Resources.make_pkg);
+
+            string bat = File.ReadAllText(temp + "\\make_pkg.bat");
+            string bat_path = Path.GetDirectoryName(temp + "\\make_pkg.bat");
+            string text = bat.Replace("tmp=", "tmp=" + bat_path).Replace("src=", "src=" + Environment.CurrentDirectory).Replace("fsz=", "fsz=4190109696").Replace("sfo=", "sfo=" + pathSplit + "\\PARAM.SFO").Replace("fdr=", "fdr=" + pathSplit).Replace("fnm=", "fnm=" + Path.GetDirectoryName(pathSplit)).Replace("dnm=", "dnm=" + directory);
+            File.WriteAllText(temp + "\\make_pkg.bat", text);
+
+            
+            Process Split = new Process();
+            Split.StartInfo.FileName = temp + "\\make_pkg.bat";
+            Split.StartInfo.CreateNoWindow = true;
+            Split.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+
+            Split.Start();
+            Split.WaitForExit();
+
+            result = Split.ExitCode;
+
+
+        }
+
+        private void backgroundMoveandCreate_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (File.Exists("chunk-01.txt"))
+            {
+                richTextBox1.Text += "chunk-01 exist\n\n";
+                string fileName = Environment.CurrentDirectory + "\\chunk-01.txt";
+                File.WriteAllText(fileName, File.ReadAllText(fileName).Replace(replace_string, ""));
+
+                System.IO.Directory.CreateDirectory(String.Format(@"{0}/{1}/{2}/{3}", Path.GetDirectoryName(pathSplit), "SPLITTED", "chunk-01", directory));
+                split_dest = Path.GetDirectoryName(pathSplit) + "\\SPLITTED\\" + "chunk-01\\" + directory + "\\";
+                richTextBox1.Text += "split destination : " + split_dest.ToString() + "\n\n";
+                richTextBox1.Text += "replace string destination : " + replace_string.ToString() + "\n\n";
+
+
+                File.Copy(Environment.CurrentDirectory + "\\chunk-01.txt", Path.GetDirectoryName(pathSplit) + "\\chunk-01.txt", true);
+                richTextBox2.Text += "[*] Processing PKG.. Please wait. This may take a few minutes..\n";
+
+                createBatandRun();
+
+
+                if (result == 0) // success
+                {
+                    richTextBox2.Text += "[*] Operation completed successfully. Games converted into 2 PKG\n[*] To install on HAN/HEN please enable HAN/HEN first\n";
+                }
+                else
+                {
+                    richTextBox2.Text += "[*] Operation failed\n";
+                }
+            }
+            else
+            {
+                MessageBox.Show("The game has a file of more than 4190109696 byte. This folder can not be divided into parts.", "CFW2OFW TO PKG", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+            
         }
 
         private void Form1_DragEnter(object sender, DragEventArgs e)
@@ -114,17 +264,21 @@ namespace CFW2OFW_TO_PKG
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+
             string path = Environment.CurrentDirectory;
-            extract("CFW2OFW_TO_PKG", path, "resources", "cygz.dll");
-            extract("CFW2OFW_TO_PKG", path, "resources", "libeay32.dll");
-            extract("CFW2OFW_TO_PKG", path, "resources", "MSCOMCTL.OCX");
-            extract("CFW2OFW_TO_PKG", path, "resources", "mswinsck.ocx");
-            extract("CFW2OFW_TO_PKG", path, "resources", "psn_package_npdrm.exe");
-            extract("CFW2OFW_TO_PKG", path, "resources", "zlib1.dll");
+            File.WriteAllBytes("cygz.dll", Properties.Resources.cygz);
+            File.WriteAllBytes("libeay32.dll", Properties.Resources.libeay32);
+            File.WriteAllBytes("MSCOMCTL.OCX", Properties.Resources.MSCOMCTL);
+            File.WriteAllBytes("mswinsck.ocx", Properties.Resources.mswinsck);
+            File.WriteAllBytes("psn_package_npdrm.exe", Properties.Resources.psn_package_npdrm);
+            File.WriteAllBytes("zlib1.dll", Properties.Resources.zlib1);
+
+
 
             this.txtGame.Text = files[0];
             string dir = this.txtGame.Text;
             DirectoryInfo dir_info = new DirectoryInfo(dir);
+            pathSplit = dir_info.ToString();
             directory = dir_info.Name;  // System32
 
             string bat = "@echo off\npsn_package_npdrm.exe -n " + directory + ".CONF " + directory;
@@ -150,6 +304,8 @@ namespace CFW2OFW_TO_PKG
             p.WaitForExit();
             result = p.ExitCode;
         }
+
+        
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -186,6 +342,15 @@ namespace CFW2OFW_TO_PKG
             System.IO.File.Delete("mswinsck.ocx");
             System.IO.File.Delete("psn_package_npdrm.exe");
             System.IO.File.Delete("zlib1.dll");
+        }
+
+
+        private static void CopyDirectory()
+        {
+
+           
+
+           
         }
 
     }

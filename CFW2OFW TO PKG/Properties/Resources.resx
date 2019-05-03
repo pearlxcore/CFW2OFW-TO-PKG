@@ -118,5 +118,55 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  
+  <data name="cygwin1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\cygwin1.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cygz" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\cygz.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dirsplit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\dirsplit.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="isgsg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\isgsg.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="libeay32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\libeay32.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="make_pkg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\make_pkg.bat;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MSCOMCTL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\MSCOMCTL.OCX;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mswinsck" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\mswinsck.ocx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="nhcolor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\nhcolor.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ps3xploit_rifgen_edatresign" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\ps3xploit_rifgen_edatresign.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="psn_package_npdrm" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\psn_package_npdrm.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sfk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\sfk.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sfoprint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\sfoprint.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Wprompt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\Wprompt.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="zlib1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\zlib1.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="create" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\create.bat;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="move" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\move.bat;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

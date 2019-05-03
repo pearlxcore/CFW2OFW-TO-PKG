@@ -59,5 +59,175 @@ namespace CFW2OFW_TO_PKG.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] create {
+            get {
+                object obj = ResourceManager.GetObject("create", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] cygwin1 {
+            get {
+                object obj = ResourceManager.GetObject("cygwin1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] cygz {
+            get {
+                object obj = ResourceManager.GetObject("cygz", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] dirsplit {
+            get {
+                object obj = ResourceManager.GetObject("dirsplit", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] isgsg {
+            get {
+                object obj = ResourceManager.GetObject("isgsg", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] libeay32 {
+            get {
+                object obj = ResourceManager.GetObject("libeay32", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] make_pkg {
+            get {
+                object obj = ResourceManager.GetObject("make_pkg", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] move {
+            get {
+                object obj = ResourceManager.GetObject("move", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] MSCOMCTL {
+            get {
+                object obj = ResourceManager.GetObject("MSCOMCTL", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] mswinsck {
+            get {
+                object obj = ResourceManager.GetObject("mswinsck", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] nhcolor {
+            get {
+                object obj = ResourceManager.GetObject("nhcolor", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] ps3xploit_rifgen_edatresign {
+            get {
+                object obj = ResourceManager.GetObject("ps3xploit_rifgen_edatresign", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] psn_package_npdrm {
+            get {
+                object obj = ResourceManager.GetObject("psn_package_npdrm", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sfk {
+            get {
+                object obj = ResourceManager.GetObject("sfk", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] sfoprint {
+            get {
+                object obj = ResourceManager.GetObject("sfoprint", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Wprompt {
+            get {
+                object obj = ResourceManager.GetObject("Wprompt", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] zlib1 {
+            get {
+                object obj = ResourceManager.GetObject("zlib1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

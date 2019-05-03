@@ -83,6 +83,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="bin\Debug\make_pkg.bat" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -103,11 +104,23 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="resources\cygz.dll" />
+    <None Include="bin\Debug\dirsplit.exe" />
     <Content Include="kisspng_tool_clip_art_tools_png_image_5a77c7356d2710_1647819215177992214471_OzU_icon.ico" />
     <EmbeddedResource Include="resources\libeay32.dll" />
     <EmbeddedResource Include="resources\MSCOMCTL.OCX" />
     <EmbeddedResource Include="resources\mswinsck.ocx" />
     <EmbeddedResource Include="resources\psn_package_npdrm.exe" />
+    <None Include="resources\create.bat" />
+    <None Include="resources\make_pkg.bat" />
+    <None Include="resources\move.bat" />
+    <None Include="resources\sfoprint.exe" />
+    <None Include="resources\Wprompt.exe" />
+    <None Include="resources\cygwin1.dll" />
+    <None Include="resources\isgsg.dll" />
+    <None Include="resources\nhcolor.exe" />
+    <None Include="resources\ps3xploit_rifgen_edatresign.exe" />
+    <None Include="resources\sfk.exe" />
+    <None Include="resources\dirsplit.exe" />
     <Content Include="tool_picture_png_image_2400_s4Y_icon.ico" />
     <EmbeddedResource Include="resources\zlib1.dll" />
   </ItemGroup>
